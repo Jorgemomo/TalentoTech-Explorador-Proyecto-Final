@@ -27,11 +27,28 @@ header {
 }
 
 header .logo {
-  font-size: 20px;
+  font-size: 40px;
 
   font-weight: bold;
 
   color: #004080;
+ 
+  list-style: none;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+
+  margin-top: 10px;
+}
+header img {
+    width: 50px;
+
+  height: 50px;
+
+  margin-left: 5px;
 }
 
 header nav ul {
@@ -188,9 +205,27 @@ footer {
 
   background-color: #f5f5f5;
 
-  font-size: 12px;
+  font-size: 14px;
 
   color: #555;
 
   border-top: 1px solid #ddd;
+}
+footer img {
+  width: 30px;
+
+  height: 30px;
+
+  margin-left: 5px;
+}
+footer ul{
+  list-style: none;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+
+  margin-top: 10px;
 }
