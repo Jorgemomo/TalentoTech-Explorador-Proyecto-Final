@@ -1,147 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title> SEMED</title>
-    <link rel="icon" href="../static/imagenes/contacto/SEMED.png" title="SEMED - Iniciar sesión">
+    <title>SEMED</title>
+    <link
+      rel="icon"
+      href="../static/imagenes/contacto/SEMED.png"
+      title="SEMED - Iniciar sesión"
+    />
 
     <link rel="stylesheet" href="../static/dashboard.css" />
+    <script type="module" src="../static/js/main.js"></script>
   </head>
 
-<body>
- <!-- Barra de navegación -->
+  <body>
+    <!-- Barra de navegación -->
 
     <header>
-      
-      <div class="logo"> <img src="../static/imagenes/contacto/SEMED.png" alt="SEMED"> SEMED</div>
+      <div class="logo">
+        <img src="../static/imagenes/contacto/SEMED.png" alt="SEMED" /> SEMED
+      </div>
 
       <nav>
         <ul>
-            <li><a href="#footerbottom">Contacto</a></li>
-          <li><a href="https://drive.google.com/file/d/1BuoO2uCHqvHFjIcxs9y2GdlD10MZw9Ed/view?usp=sharing" target="_blank">Manual de usuario</a></li>
+          <li><a href="#footerbottom">Contacto</a></li>
+          <li>
+            <a
+              href="https://drive.google.com/file/d/1BuoO2uCHqvHFjIcxs9y2GdlD10MZw9Ed/view?usp=sharing"
+              target="_blank"
+              >Manual de usuario</a
+            >
+          </li>
 
           <li><a href="#configurarperfil">configurar perfil</a></li>
-          
-          <li><a href="../templates/registromedicantos.html" target="_blank" class="btn-register"> Registrar Medicamento </a></li>
 
+          <li>
+            <a
+              href="../templates/registromedicantos.html"
+              target="_blank"
+              class="btn-register"
+            >
+              Registrar Medicamento
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
     <!-- Contenedor-->
-<main class="dashboard">
-    <div class="top">
+    <main class="dashboard">
+      <div class="top">
         <div class="semedtext">
-   <br>
-   <h1>Sistema de Gestión de Calidad del Método SEMED</h1>
-   <br>
-   <p> Gestión inteligente de vencimiento para inventario médico. Este sistema permite monitorear el estado de los medicamentos según su fecha de caducidad, clasificándolos en categorías visuales que facilitan el control del inventario y ayudan a prevenir pérdidas o riesgos en el uso de productos vencidos.
- </p>
-   <br> 
+          <br />
+          <h1>Sistema de Gestión de Calidad del Método SEMED</h1>
+          <br />
+          <p>
+            Gestión inteligente de vencimiento para inventario médico. Este
+            sistema permite monitorear el estado de los medicamentos según su
+            fecha de caducidad, clasificándolos en categorías visuales que
+            facilitan el control del inventario y ayudan a prevenir pérdidas o
+            riesgos en el uso de productos vencidos.
+          </p>
+          <br />
         </div>
-</div>
-<br>
+      </div>
+      <br />
 
-<div class="acciones">
-<button class="btn"> ⚙ Configurar Categorías </button>
-<button class="btn pricipal">➕Agregar medicamento</button>
-</div>
+      <div class="acciones">
+        <button class="btn">⚙ Configurar Categorías</button>
+        <button class="btn pricipal">➕Agregar medicamento</button>
+      </div>
 
-<div class="busqueda">
-<input type="text" placeholder="Buscar medicamento por nombre">
-<button class="buscar">🔍Buscar</button>
-</div>
-<br>
+      <div class="busqueda">
+        <input type="search" placeholder="Buscar medicamento por nombre" />
+        <button class="buscar">🔍Buscar</button>
+      </div>
+      <br />
 
-<div class="legend">
-    <span class="pill verde"> Seguro (&gt;30 días)</span>
-    <span class="pill amarillo"> Atención (5-15 días)</span>
-    <span class="pill rojo"> Crítico (&lt;5 días)</span>
-</div>
+      <div class="legend">
+        <span class="pill verde"> Seguro (&gt;30 días)</span>
+        <span class="pill amarillo"> Atención (5-15 días)</span>
+        <span class="pill rojo"> Crítico (&lt;5 días)</span>
+      </div>
+    </main>
 
-
-</main>
-
-<section id="bottom">
-<div class="kanban">
-    <div class="colseguro">
-        <h3> ✔ Seguro </h3>
-        <div class="card">
-            <h4>Sertralina</h4> <!-- nombre del medicamento-->
-            <h6>lote: 09</h6> <!-- lote -->
-            <p>50mg- Tabletas</p> <!--miligramos y presentación-->
-            <p>2000 unds.</p> <!-- cantidad inventario-->
-            <h4>2021M-0001992-R2</h4> <!--Registro invima-->  
-            <p>Genfar</p> <!-- laboratorio -->
-            <p class="fecha">Vence: 12/08/2026</p> <!-- fecha de vencimiento-->
-        </div>
-        <div class="card">
+    <section id="bottom">
+      <div class="kanban">
+        <div class="colseguro">
+          <h3>✔ Seguro</h3>
+          <div class="card" draggable="true">
+            <h4>Sertralina</h4>
+            <!-- nombre del medicamento-->
+            <h6>lote: 09</h6>
+            <!-- lote -->
+            <p>50mg- Tabletas</p>
+            <!--miligramos y presentación-->
+            <p>2000 unds.</p>
+            <!-- cantidad inventario-->
+            <h4>2021M-0001992-R2</h4>
+            <!--Registro invima-->
+            <p>Genfar</p>
+            <!-- laboratorio -->
+            <p class="fecha">Vence: 12/08/2026</p>
+            <!-- fecha de vencimiento-->
+          </div>
+          <div class="card" draggable="true">
             <h4>metformina</h4>
-            <h6>lote: 27</h6> 
+            <h6>lote: 27</h6>
             <p>Suspensión</p>
             <p>1500 unds.</p>
             <h4>2008M-0008511</h4>
-           <p>Genfar</p> <!-- laboratorio -->
+            <p>Genfar</p>
+            <!-- laboratorio -->
             <p class="fecha">Vence: 20/09/2026</p>
-
+          </div>
         </div>
-
-    </div>
-    <div class="colatencion">
-        <h3>⚠ Atención</h3>
-        <div class="card">
+        <div class="colatencion">
+          <h3>⚠ Atención</h3>
+          <div class="card" draggable="true">
             <h4>Paracetamol</h4>
-            <h6>lote: 21 </h6>
+            <h6>lote: 21</h6>
             <p>500mg- Tabletas</p>
             <p>500 unds.</p>
-            <h4>2023M-0017613-R1 </h4>
-            <p>Genfar</p> <!-- laboratorio -->
+            <h4>2023M-0017613-R1</h4>
+            <p>Genfar</p>
+            <!-- laboratorio -->
             <p class="fecha">Vence: 20/03/2026</p>
-
+          </div>
         </div>
-
-    </div>
-    <div class="colcritico">
-        <h3>❌ Crítico</h3>
-        <div class="card">
+        <div class="colcritico" draggable="true">
+          <h3>❌ Crítico</h3>
+          <div class="card">
             <h4>Insulina</h4>
             <h6>lote: 05</h6>
             <p>10ml- Inyección</p>
             <p>100 unds.</p>
-            <h4> 2022DM-0025145 </h4>
-            <p>Genfar</p> <!-- laboratorio -->
+            <h4>2022DM-0025145</h4>
+            <p>Genfar</p>
+            <!-- laboratorio -->
             <p class="fecha">Vence: 13/03/2026</p>
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
 
-</div>
-</section>
-
-
-<br>
+    <br />
     <!-- Pie de página -->
 
     <footer id="footerbottom">
-<!--contacto card-->
+      <!--contacto card-->
 
       <div class="contact-card">
         <h4>Contacto</h4>
-<br>
+        <br />
         <p>
           Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos:
         </p>
 
         <ul>
-          <img src="../static/imagenes/contacto/chatting_11773689.png" alt="www.freepik.com"><li><strong>Email:</strong> info@semed.com</li>
-          <img src="../static/imagenes/contacto/customer-service_12660994.png" alt="www.freepik.com "><li><strong>Teléfono:</strong> +34 91 123 45 67</li>
+          <img
+            src="../static/imagenes/contacto/chatting_11773689.png"
+            alt="www.freepik.com"
+          />
+          <li><strong>Email:</strong> info@semed.com</li>
+          <img
+            src="../static/imagenes/contacto/customer-service_12660994.png"
+            alt="www.freepik.com "
+          />
+          <li><strong>Teléfono:</strong> +34 91 123 45 67</li>
         </ul>
       </div>
-<br>
+      <br />
       <p>
         © 2023 SEMED - Sistema de gestión semed. Todos los derechos reservados.
       </p>
     </footer>
-</body>
+  </body>
 </html>
