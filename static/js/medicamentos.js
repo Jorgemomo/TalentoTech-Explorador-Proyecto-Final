@@ -1,43 +1,42 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Capturamos el formulario por su ID "card"
     const formMedicamento = document.getElementById("card");
+    const API_URL = "http://127.0.0.1:5000";
 
     if (formMedicamento) {
-        formMedicamento.addEventListener("submit", (e) => {
-            e.preventDefault(); // Evitamos que la página se recargue
+        formMedicamento.addEventListener("submit", async (e) => {
+            e.preventDefault(); 
 
-            // Capturar los valores de todos los inputs
-            const nombre = document.getElementById("nombre").value;
-            const lote = document.getElementById("lote").value;
-            const presentacion = document.getElementById("presentacion").value;
-            const cantidad = document.getElementById("cantidad").value;
-            const laboratorio = document.getElementById("laboratorio").value;
-            const registro_invima = document.getElementById("registro_invima").value;
-            const fecha_vencimiento = document.getElementById("fecha_vencimiento").value;
-
-            // Obtener el inventario actual o crear uno vacío
-            let inventario = JSON.parse(localStorage.getItem("semed_medicamentos")) || [];
-
-            // Crear el objeto del nuevo medicamento
-            const nuevoMedicamento = {
-                id: Date.now(), // Generamos un ID único basado en la fecha actual
-                nombre,
-                lote,
-                presentacion,
-                cantidad,
-                laboratorio,
-                registro_invima,
-                fecha_vencimiento
+            // Construir el objeto con los datos del formulario
+            const datosMedicamento = {
+                nombre: document.getElementById("nombre").value,
+                lote: document.getElementById("lote").value,
+                presentacion: document.getElementById("presentacion").value,
+                cantidad: document.getElementById("cantidad").value,
+                laboratorio: document.getElementById("laboratorio").value,
+                registro_invima: document.getElementById("registro_invima").value,
+                fecha_vencimiento: document.getElementById("fecha_vencimiento").value
             };
 
-            // Guardar en la "base de datos" temporal
-            inventario.push(nuevoMedicamento);
-            localStorage.setItem("semed_medicamentos", JSON.stringify(inventario));
+            try {
+                // Enviar petición POST al backend
+                const response = await fetch(`${API_URL}/registrar_medicamento`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(datosMedicamento)
+                });
 
-            alert("💊 Medicamento registrado con éxito en el inventario.");
-            
-            // Redirigir de vuelta al panel principal
-            window.location.href = "./dashboard.html"; 
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert("💊 " + data.mensaje);
+                    window.location.href = "./dashboard.html"; 
+                } else {
+                    alert("Error al registrar: " + data.error);
+                }
+            } catch (error) {
+                console.error("Error en la conexión con la base de datos:", error);
+                alert("No se pudo conectar con el servidor de base de datos.");
+            }
         });
     }
 });
