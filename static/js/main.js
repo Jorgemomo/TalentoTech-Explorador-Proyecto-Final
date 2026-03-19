@@ -127,3 +127,5 @@ card.forEach((item) => {
     }
   });
 });
+
+const usuarios = {};
