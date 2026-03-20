@@ -3,21 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <title>Registro de Usuario - SEMED</title>
-        <link rel="icon" href="../static/imagenes/contacto/SEMED.png">
+    <link rel="icon" href="../static/imagenes/contacto/SEMED.png" />
 
     <link rel="stylesheet" href="../static/registros.css" />
   </head>
 
   <body>
-<!-- Barra de navegación -->
+    <!-- Barra de navegación -->
 
     <header>
-      
-      <div class="logo"> <img src="../static/imagenes/contacto/SEMED.png" alt="SEMED"> SEMED</div>
+      <div class="logo">
+        <img src="../static/imagenes/contacto/SEMED.png" alt="SEMED" /> SEMED
+      </div>
 
       <nav>
         <ul>
-          <li><a href="https://drive.google.com/file/d/1BuoO2uCHqvHFjIcxs9y2GdlD10MZw9Ed/view?usp=sharing" target="_blank">Manual de usuario</a></li>
+          <li>
+            <a
+              href="https://drive.google.com/file/d/1BuoO2uCHqvHFjIcxs9y2GdlD10MZw9Ed/view?usp=sharing"
+              target="_blank"
+              >Manual de usuario</a
+            >
+          </li>
 
           <li><a href="#footerbottom">Contacto</a></li>
 
@@ -33,7 +40,7 @@
         <h1>Registro de Usuario</h1>
         <p>Sistema de gestión de caducidades clínicas mediante semáforos.</p>
 
-        <form action="/registro" method="POST">
+        <form id="formRegistro">
           <div>
             <label for="nombre">Nombre Completo</label>
             <input
@@ -104,8 +111,13 @@
           <div class="checkbox-container">
             <input type="checkbox" id="terminos" name="terminos" required />
             <label for="terminos">
-              Acepto los <a href="https://drive.google.com/file/d/1ujxSPaY_ELN44XdXMWgln21DghOIlhho/view?usp=sharing" target="_blank" >términos y condiciones</a> y la política de
-              privacidad de datos clínicos.
+              Acepto los
+              <a
+                href="https://drive.google.com/file/d/1ujxSPaY_ELN44XdXMWgln21DghOIlhho/view?usp=sharing"
+                target="_blank"
+                >términos y condiciones</a
+              >
+              y la política de privacidad de datos clínicos.
             </label>
           </div>
           <button type="submit">Crear cuenta</button>
@@ -116,28 +128,35 @@
       </section>
     </main>
 
-        <!-- Pie de página -->
+    <!-- Pie de página -->
 
     <footer id="footerbottom">
-<!--contacto card-->
+      <!--contacto card-->
       <div class="contact-card">
         <h3>Contacto</h3>
-<br>
+        <br />
         <p>
           Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos:
         </p>
 
         <ul>
-          <img src="../static/imagenes/contacto/chatting_11773689.png" alt="www.freepik.com"><li><strong>Email:</strong> info@semed.com</li>
-          <img src="../static/imagenes/contacto/customer-service_12660994.png" alt="www.freepik.com "><li><strong>Teléfono:</strong> +34 91 123 45 67</li>
+          <img
+            src="../static/imagenes/contacto/chatting_11773689.png"
+            alt="www.freepik.com"
+          />
+          <li><strong>Email:</strong> info@semed.com</li>
+          <img
+            src="../static/imagenes/contacto/customer-service_12660994.png"
+            alt="www.freepik.com "
+          />
+          <li><strong>Teléfono:</strong> +34 91 123 45 67</li>
         </ul>
       </div>
-<br>
+      <br />
       <p>
         © 2023 SEMED - Sistema de gestión semed. Todos los derechos reservados.
       </p>
     </footer>
-
+    <script src="../static/js/auth.js"></script>
   </body>
-  
 </html>
