@@ -108,12 +108,7 @@ body {
     margin-bottom: 20px;
 }
 
-.legend {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    font-size: 20px;
-}
+
 
 .pill {
     padding: 6px 12px;
@@ -179,6 +174,14 @@ body {
 }
 
 /*Kanban-Bottom*/
+
+.legend {
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 2px 5px #a9c2e6d0;
+    gap: 20px;
+    font-size: 20px;
+}
 
 .bottom {
     display: flex;
