@@ -8,35 +8,34 @@
     <link rel="stylesheet" href="../static/registromedicamentos.css">
 </head>
 <body>
-     <!-- Barra de navegación -->
-
+    <!-- Barra de navegación -->
     <header>
-      
-      <div class="logo"> <img src="../static/imagenes/contacto/SEMED.png" alt="SEMED"> SEMED</div>
-
+      <div class="logo">
+        <img src="../static/imagenes/contacto/SEMED.png" alt="SEMED"> SEMED
+      </div>
       <nav>
         <ul>
             <li><a href="#footerbottom">Contacto</a></li>
-          <li><a href="https://drive.google.com/file/d/1BuoO2uCHqvHFjIcxs9y2GdlD10MZw9Ed/view?usp=sharing" target="_blank">Manual de usuario</a></li>
-
-          <li><a href="#configurarperfil">configurar perfil</a></li>
-          
-          <li><a href="../templates/dashboard.html" target="_blank" class="btn-register">Volver SEMED </a></li>
-
+            <li><a href="https://drive.google.com/file/d/1BuoO2uCHqvHFjIcxs9y2GdlD10MZw9Ed/view?usp=sharing" target="_blank">Manual de usuario</a></li>
+            <li><a href="./perfil.html">Configurar perfil</a></li>
+            <li><a href="./dashboard.html" class="btn-register">Volver SEMED</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
-                <div class="h1">
-                    <h1>Registrar nuevo medicamento:</h1>
-
+        <div class="h1">
+            <h1>Registrar nuevo medicamento:</h1>
         </div>
     </main>
-    <!-- formulario de registro  de medicamentos-->
-    <section class="registro">
 
-        <form action="/registrar" method="post" id="card">
+    <!-- Formulario de registro de medicamentos -->
+    <section class="registro">
+        <!--
+            IMPORTANTE: El form NO tiene action ni method para evitar el submit HTML tradicional.
+            El envío lo controla completamente medicamentos.js mediante fetch a la API.
+        -->
+        <form id="card">
             <label for="nombre">Nombre del medicamento:</label>
             <input type="text" placeholder="ej. Sertralina" id="nombre" name="nombre" required>
 
@@ -47,7 +46,7 @@
             <input type="text" placeholder="Ej. 50mg - Tabletas" id="presentacion" name="presentacion" required>
 
             <label for="cantidad">Cantidad en inventario:</label>
-            <input type="number" placeholder="Unidades" id="cantidad" name="cantidad" required>
+            <input type="number" placeholder="Unidades" id="cantidad" name="cantidad" min="0" required>
 
             <label for="laboratorio">Nombre del laboratorio:</label>
             <input type="text" placeholder="Ej. laboratorio ABYZ" id="laboratorio" name="laboratorio" required>
@@ -55,35 +54,31 @@
             <label for="registro_invima">Registro INVIMA:</label>
             <input type="text" placeholder="Ej. 2023M-0017613-R1" id="registro_invima" name="registro_invima" required>
 
-            <label for="fecha_vencimiento">🔴🟡🟢Fecha de vencimiento:</label>
-            <input type="date" placeholder="dd/mm/aaaa" id="fecha_vencimiento" name="fecha_vencimiento" required>
+            <label for="fecha_vencimiento">🔴🟡🟢 Fecha de vencimiento:</label>
+            <input type="date" id="fecha_vencimiento" name="fecha_vencimiento" required>
 
-            <button type="submit" class="button-medicamento">💊Registrar medicamento💊</button>
+            <button type="submit" class="button-medicamento">💊 Registrar medicamento 💊</button>
         </form>
-
     </section>
 
- <!-- Pie de página -->
-
+    <!-- Pie de página -->
     <footer id="footerbottom">
-<!--contacto card-->
-
       <div class="contact-card">
         <h4>Contacto</h4>
-<br>
-        <p>
-          Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos:
-        </p>
-
+        <br>
+        <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos:</p>
         <ul>
-          <img src="../static/imagenes/contacto/chatting_11773689.png" alt="www.freepik.com"><li><strong>Email:</strong> info@semed.com</li>
-          <img src="../static/imagenes/contacto/customer-service_12660994.png" alt="www.freepik.com "><li><strong>Teléfono:</strong> +34 91 123 45 67</li>
+          <img src="../static/imagenes/contacto/chatting_11773689.png" alt="www.freepik.com">
+          <li><strong>Email:</strong> info@semed.com</li>
+          <img src="../static/imagenes/contacto/customer-service_12660994.png" alt="www.freepik.com">
+          <li><strong>Teléfono:</strong> +34 91 123 45 67</li>
         </ul>
       </div>
-<br>
-      <p>
-        © 2023 SEMED - Sistema de gestión semed. Todos los derechos reservados.
-      </p>
+      <br>
+      <p>© 2023 SEMED - Sistema de gestión semed. Todos los derechos reservados.</p>
     </footer>
+
+    <!-- ✅ Script de medicamentos — OBLIGATORIO para que funcione el formulario -->
+    <script src="../static/js/medicamentos.js"></script>
 </body>
 </html>

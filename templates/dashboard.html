@@ -2,41 +2,56 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>SEMED</title>
-    <link
-      rel="icon"
-      href="../static/imagenes/contacto/SEMED.png"
-      title="SEMED - Iniciar sesión"
-    />
-
+    <title>SEMED — Dashboard</title>
+    <link rel="icon" href="../static/imagenes/contacto/SEMED.png" title="SEMED" />
     <link rel="stylesheet" href="../static/dashboard.css" />
-    <script type="module" src="../static/js/main.js"></script>
   </head>
 
   <body>
-    <!-- Barra de navegación -->
 
+    <!-- ─── Toast global ──────────────────────────────────────────────────── -->
+    <div id="dashToast" class="dash-toast"></div>
+
+    <!-- ─── Modal: Filtrar categorías ────────────────────────────────────── -->
+    <div id="modalFiltro" class="modal-overlay">
+      <div class="modal-box">
+        <h3>⚙ Filtrar categorías</h3>
+        <p>Selecciona qué columnas quieres ver en el tablero:</p>
+        <div class="filtro-opciones">
+          <label class="filtro-label verde">
+            <input type="checkbox" id="chkSeguro" checked />
+            <span>✔ Seguro <small>(&gt;30 días)</small></span>
+          </label>
+          <label class="filtro-label amarillo">
+            <input type="checkbox" id="chkAtencion" checked />
+            <span>⚠ Atención <small>(5–30 días)</small></span>
+          </label>
+          <label class="filtro-label rojo">
+            <input type="checkbox" id="chkCritico" checked />
+            <span>❌ Crítico <small>(&lt;5 días / vencido)</small></span>
+          </label>
+        </div>
+        <div class="modal-actions">
+          <button id="btnCerrarFiltro" class="btn">Cancelar</button>
+          <button id="btnAplicarFiltro" class="btn principal">Aplicar filtro</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Header ────────────────────────────────────────────────────────── -->
     <header>
       <div class="logo">
         <img src="../static/imagenes/contacto/SEMED.png" alt="SEMED" /> SEMED
       </div>
-
       <nav>
         <ul>
           <li><a href="#footerbottom">Contacto</a></li>
           <li>
-            <a
-              href="https://drive.google.com/file/d/1BuoO2uCHqvHFjIcxs9y2GdlD10MZw9Ed/view?usp=sharing"
-              target="_blank"
-              >Manual de usuario</a
-            >
+            <a href="https://drive.google.com/file/d/1BuoO2uCHqvHFjIcxs9y2GdlD10MZw9Ed/view?usp=sharing"
+               target="_blank">Manual de usuario</a>
           </li>
-
-          <li><a href="../templates/perfil.html">configurar perfil</a></li>
-
+          <li><a href="../templates/perfil.html">Configurar perfil</a></li>
           <li>
             <a href="../templates/registromedicantos.html" class="btn-register">
               Registrar Medicamento
@@ -45,7 +60,8 @@
         </ul>
       </nav>
     </header>
-    <!-- Contenedor-->
+
+    <!-- ─── Main ─────────────────────────────────────────────────────────── -->
     <main class="dashboard">
       <div class="top">
         <div class="semedtext">
@@ -60,88 +76,84 @@
             riesgos en el uso de productos vencidos.
           </p>
           <br />
+          <p class="bienvenida">👤 Sesión: <strong id="usuarioNombre"></strong></p>
         </div>
       </div>
       <br />
 
       <div class="acciones">
-        <button class="btn">⚙ Configurar Categorías</button>
-        <button class="btn pricipal">➕Agregar medicamento</button>
+        <!-- Ahora abre el modal de filtro -->
+        <button class="btn" id="btnFiltro">⚙ Configurar Categorías</button>
+        <!-- Cambiado de "Agregar medicamento" a "Borrar medicamento" -->
+        <button class="btn" id="btnBorrar">🗑️ Borrar medicamento</button>
       </div>
 
       <div class="busqueda">
-        <input type="search" placeholder="Buscar medicamento por nombre" />
-        <button class="buscar">🔍Buscar</button>
+        <input id="inputBuscar" type="search" placeholder="Buscar medicamento por nombre…" />
+        <button class="buscar" id="btnBuscar">🔍 Buscar</button>
       </div>
       <br />
 
       <div class="legend">
-        <span class="pill verde"> Seguro (&gt;30 días)</span>
-        <span class="pill amarillo"> Atención (5-15 días)</span>
-        <span class="pill rojo"> Crítico (&lt;5 días)</span>
+        <span class="pill verde">✔ Seguro (&gt;30 días)</span>
+        <span class="pill amarillo">⚠ Atención (5–30 días)</span>
+        <span class="pill rojo">❌ Crítico (&lt;5 días)</span>
       </div>
+
+      <!-- Indicadores de carga y error -->
+      <p id="kanbanLoading" style="display:none; text-align:center; margin-top:20px;">
+        ⏳ Cargando medicamentos…
+      </p>
+      <p id="errorMsg" style="display:none; text-align:center; color:#c0392b; margin-top:20px;">
+        ⚠ No se pudo conectar con el servidor. Verifica que el backend está corriendo.
+      </p>
     </main>
 
+    <!-- ─── Kanban ─────────────────────────────────────────────────────────── -->
     <section id="bottom">
       <div class="kanban">
-        <div class="colseguro">
-          <h3>✔ Seguro</h3>
-          <!-- <div class="card" draggable="true"> -->
-          <!-- <h4>Sertralina</h4> -->
-          <!-- nombre del medicamento-->
-          <!-- <h6>lote: 09</h6> -->
-          <!-- lote -->
-          <!-- <p>50mg- Tabletas</p> -->
-          <!--miligramos y presentación-->
-          <!-- <p>2000 unds.</p> -->
-          <!-- cantidad inventario-->
-          <!-- <h4>2021M-0001992-R2</h4> -->
-          <!--Registro invima-->
-          <!-- <p>Genfar</p> -->
-          <!-- laboratorio -->
-          <!-- <p class="fecha">Vence: 12/08/2026</p> -->
-          <!-- fecha de vencimiento-->
-          <!-- </div> -->
+
+        <div class="col-wrapper-seguro">
+          <div class="colseguro" id="colSeguro">
+            <h3>✔ Seguro <span class="col-count" id="cntSeguro">0</span></h3>
+          </div>
         </div>
-        <div class="colatencion">
-          <h3>⚠ Atención</h3>
+
+        <div class="col-wrapper-atencion">
+          <div class="colatencion" id="colAtencion">
+            <h3>⚠ Atención <span class="col-count" id="cntAtencion">0</span></h3>
+          </div>
         </div>
-        <div class="colcritico">
-          <h3>❌ Crítico</h3>
+
+        <div class="col-wrapper-critico">
+          <div class="colcritico" id="colCritico">
+            <h3>❌ Crítico <span class="col-count" id="cntCritico">0</span></h3>
+          </div>
         </div>
+
       </div>
     </section>
 
     <br />
-    <!-- Pie de página -->
 
+    <!-- ─── Footer ────────────────────────────────────────────────────────── -->
     <footer id="footerbottom">
-      <!--contacto card-->
-
       <div class="contact-card">
         <h4>Contacto</h4>
         <br />
-        <p>
-          Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos:
-        </p>
-
+        <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos:</p>
         <ul>
-          <img
-            src="../static/imagenes/contacto/chatting_11773689.png"
-            alt="www.freepik.com"
-          />
+          <img src="../static/imagenes/contacto/chatting_11773689.png" alt="www.freepik.com" />
           <li><strong>Email:</strong> info@semed.com</li>
-          <img
-            src="../static/imagenes/contacto/customer-service_12660994.png"
-            alt="www.freepik.com "
-          />
+          <img src="../static/imagenes/contacto/customer-service_12660994.png" alt="www.freepik.com" />
           <li><strong>Teléfono:</strong> +34 91 123 45 67</li>
         </ul>
       </div>
       <br />
-      <p>
-        © 2023 SEMED - Sistema de gestión semed. Todos los derechos reservados.
-      </p>
+      <p>© 2023 SEMED - Sistema de gestión semed. Todos los derechos reservados.</p>
     </footer>
+
+    <!-- Script al final del body (sin type="module" para evitar problemas de CORS en file://) -->
+    <script src="../static/js/main.js"></script>
   </body>
 </html>
