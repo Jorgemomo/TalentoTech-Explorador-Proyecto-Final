@@ -37,7 +37,7 @@ El objetivo principal es reducir el consumo accidental de medicamentos vencidos 
 
 A continuación se describe la organización principal de los archivos para facilitar la navegación a los desarrolladores:
 
-
+```text
 /
 ├── templates/ # Vistas HTML de la aplicación
 │ ├── index.html # Pantalla de inicio de sesión (Login)
